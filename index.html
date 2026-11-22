@@ -4,121 +4,215 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>Ayuda y orientación - Rivera</title>
+<meta name="theme-color" content="#5b2a86">
+<title>Rivera | Ayuda y contactos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
-  :root { --fg:#1d1d1f; --muted:#5b5b66; --line:#e3e3e8; --accent:#6b2d8f; --bg:#fafafc; }
-  * { box-sizing:border-box; }
-  body { margin:0; font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; color:var(--fg); background:var(--bg); line-height:1.45; }
-  header { background:var(--accent); color:#fff; padding:18px 16px 16px; }
-  header h1 { margin:0 0 4px; font-size:1.3rem; }
-  header p { margin:0; font-size:.95rem; opacity:.9; }
-  main { max-width:640px; margin:0 auto; padding:12px 14px 90px; }
-  .urgente { background:#fff; border:2px solid var(--accent); border-radius:12px; padding:14px; margin:12px 0 18px; }
-  .urgente h2 { margin:0 0 8px; font-size:1.05rem; }
-  .btns { display:flex; flex-wrap:wrap; gap:8px; }
-  a.btn { display:inline-block; text-decoration:none; background:var(--accent); color:#fff; padding:10px 14px; border-radius:10px; font-weight:600; font-size:.95rem; }
-  a.btn.sec { background:#fff; color:var(--accent); border:1.5px solid var(--accent); }
-  .card { background:#fff; border:1px solid var(--line); border-radius:12px; padding:14px; margin:0 0 12px; }
-  .card h2 { margin:0 0 2px; font-size:1.05rem; }
-  .card .que { margin:0 0 10px; color:var(--muted); font-size:.92rem; }
-  dl { margin:0 0 10px; display:grid; grid-template-columns:auto 1fr; gap:4px 10px; font-size:.93rem; }
-  dt { color:var(--muted); }
-  dd { margin:0; }
-  footer { font-size:.8rem; color:var(--muted); margin-top:18px; }
-  #salir { position:fixed; right:12px; bottom:12px; background:#c0392b; color:#fff; border:0; border-radius:24px; padding:12px 18px; font-weight:700; font-size:.95rem; box-shadow:0 2px 8px rgba(0,0,0,.25); cursor:pointer; }
+  :root{
+    --violeta:#5b2a86; --violeta-osc:#3d1a5c; --lila:#efe6f7; --rosa:#e8457c;
+    --texto:#2b2233; --gris:#6d6378; --blanco:#fff;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:"Poppins",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--texto);background:#faf7fc;line-height:1.5}
+  a{color:inherit}
+  .wrap{max-width:960px;margin:0 auto;padding:0 18px}
+
+  /* barra superior */
+  .top{background:var(--violeta-osc);color:#fff;font-size:.8rem;letter-spacing:.04em}
+  .top .wrap{display:flex;justify-content:space-between;align-items:center;min-height:38px;gap:10px}
+  .top a{text-decoration:none;font-weight:600}
+
+  /* hero */
+  .hero{background:linear-gradient(135deg,var(--violeta) 0%,#7b3fae 55%,var(--rosa) 130%);color:#fff;padding:44px 0 56px;position:relative;overflow:hidden}
+  .hero::after{content:"";position:absolute;right:-90px;top:-90px;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,.08)}
+  .hero h1{margin:0 0 12px;font-weight:800;font-size:clamp(1.7rem,5.5vw,2.8rem);line-height:1.12;text-transform:uppercase;max-width:15ch}
+  .hero p{margin:0 0 26px;font-size:1.05rem;max-width:46ch;opacity:.95}
+  .cta{display:flex;flex-wrap:wrap;gap:12px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;font-weight:600;text-transform:uppercase;letter-spacing:.04em;font-size:.88rem;border-radius:999px;padding:13px 22px;border:2px solid transparent;transition:transform .12s,box-shadow .12s}
+  .btn:active{transform:scale(.97)}
+  .btn-blanco{background:#fff;color:var(--violeta)}
+  .btn-rosa{background:var(--rosa);color:#fff}
+  .btn-borde{border-color:rgba(255,255,255,.8);color:#fff}
+  .btn-violeta{background:var(--violeta);color:#fff}
+  .btn-suave{background:var(--lila);color:var(--violeta)}
+  .btn small{font-weight:400;text-transform:none;letter-spacing:0;opacity:.85}
+
+  /* franja urgencia */
+  .urgencia{margin-top:-28px;position:relative;z-index:2}
+  .urgencia .caja{background:#fff;border-radius:18px;box-shadow:0 10px 30px rgba(61,26,92,.15);padding:22px;display:grid;gap:16px;grid-template-columns:1fr}
+  .num{display:flex;align-items:center;gap:14px;text-decoration:none}
+  .num .ico{flex:0 0 52px;height:52px;border-radius:14px;display:grid;place-items:center;background:var(--lila);color:var(--violeta)}
+  .num.alerta .ico{background:#fde7ee;color:var(--rosa)}
+  .num b{display:block;font-size:1.45rem;font-weight:800;line-height:1.1;color:var(--violeta)}
+  .num.alerta b{color:var(--rosa)}
+  .num span{font-size:.85rem;color:var(--gris)}
+  @media(min-width:720px){.urgencia .caja{grid-template-columns:repeat(3,1fr)}}
+
+  /* secciones */
+  section.bloque{padding:46px 0 10px}
+  .titulo{font-weight:800;text-transform:uppercase;font-size:1.35rem;margin:0 0 6px;color:var(--violeta-osc)}
+  .bajada{margin:0 0 22px;color:var(--gris)}
+  .grid{display:grid;gap:18px;grid-template-columns:1fr}
+  @media(min-width:720px){.grid{grid-template-columns:1fr 1fr}}
+
+  .card{background:#fff;border-radius:18px;padding:22px;box-shadow:0 4px 18px rgba(61,26,92,.07);display:flex;flex-direction:column}
+  .card .cab{display:flex;gap:14px;align-items:center;margin-bottom:12px}
+  .sigla{flex:0 0 56px;height:56px;border-radius:16px;display:grid;place-items:center;font-weight:800;font-size:.8rem;letter-spacing:.03em;color:#fff;background:var(--violeta)}
+  .sigla{position:relative;overflow:hidden}
+  .sigla img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#fff;padding:6px}
+  .sigla.c2{background:#2f6f9f}.sigla.c3{background:#1d8a6b}.sigla.c4{background:#b8457a}
+  .card h3{margin:0;font-size:1.05rem;line-height:1.25}
+  .card .tipo{margin:2px 0 0;font-size:.82rem;color:var(--gris)}
+  .card ul{list-style:none;margin:6px 0 18px;padding:0;font-size:.93rem}
+  .card li{display:flex;gap:10px;padding:6px 0;border-bottom:1px dashed #eadff3}
+  .card li:last-child{border-bottom:0}
+  .card li svg{flex:0 0 18px;margin-top:3px;color:var(--violeta)}
+  .acciones{margin-top:auto;display:flex;flex-wrap:wrap;gap:8px}
+  .acciones .btn{padding:10px 16px;font-size:.8rem}
+
+  .senales{background:var(--violeta-osc);color:#fff;border-radius:22px;padding:30px 24px;margin-top:40px}
+  .senales h2{margin:0 0 8px;text-transform:uppercase;font-weight:800;font-size:1.4rem}
+  .senales p{margin:0 0 18px;opacity:.9}
+
+  footer{padding:36px 0 110px;color:var(--gris);font-size:.85rem;text-align:center}
+
+  #salir{position:fixed;right:14px;bottom:14px;z-index:50;background:var(--rosa);color:#fff;border:0;border-radius:999px;padding:14px 20px;font:600 .9rem "Poppins",system-ui,sans-serif;text-transform:uppercase;letter-spacing:.05em;box-shadow:0 6px 18px rgba(232,69,124,.45);cursor:pointer;display:flex;align-items:center;gap:8px}
 </style>
 </head>
 <body>
-<header>
-  <h1>Ayuda y orientación en Rivera</h1>
-  <p>Violencia basada en género, apoyo social y trabajo. Servicios públicos y gratuitos.</p>
-</header>
-<main>
 
-  <section class="urgente">
-    <h2>Si estás en peligro ahora</h2>
-    <div class="btns">
-      <a class="btn" href="tel:911">Emergencias 911</a>
-      <a class="btn" href="tel:08004141">0800 4141</a>
-      <a class="btn sec" href="tel:*4141">*4141 desde celular</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-tel" viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25c1.1.37 2.3.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></symbol>
+  <symbol id="i-reloj" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 10.4 3.2 1.9-.8 1.3L11 13V7h2z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><path fill="currentColor" d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5z"/></symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7a11.4 11.4 0 0 1-4.4-3.9c-.3-.5-1.1-1.5-1.1-2.9s.7-2 1-2.3a1 1 0 0 1 .7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.3 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6a8.5 8.5 0 0 0 1.6 2 7.7 7.7 0 0 0 2.3 1.4c.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></symbol>
+  <symbol id="i-alerta" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2 1 21h22L12 2zm1 16h-2v-2h2zm0-4h-2V9h2z"/></symbol>
+  <symbol id="i-salir" viewBox="0 0 24 24"><path fill="currentColor" d="M10 17v-3H3v-4h7V7l5 5-5 5zm9-14H12v2h7v14h-7v2h7a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2z"/></symbol>
+</svg>
+
+<div class="top"><div class="wrap">
+  <span>RIVERA · URUGUAY</span>
+  <a href="tel:911">EMERGENCIAS 911</a>
+</div></div>
+
+<header class="hero"><div class="wrap">
+  <h1>No estás sola. Pedir ayuda es un derecho.</h1>
+  <p>Servicios públicos y gratuitos de Rivera para mujeres en situación de violencia, apoyo social y trabajo.</p>
+  <div class="cta">
+    <a class="btn btn-blanco" href="tel:08004141">Llamar 0800 4141</a>
+    <a class="btn btn-borde" href="#servicios">Ver servicios en Rivera</a>
+  </div>
+</div></header>
+
+<div class="wrap urgencia"><div class="caja">
+  <a class="num alerta" href="tel:911">
+    <div class="ico"><svg width="26" height="26"><use href="#i-alerta"/></svg></div>
+    <div><b>911</b><span>Si estás en peligro ahora</span></div>
+  </a>
+  <a class="num" href="tel:08004141">
+    <div class="ico"><svg width="26" height="26"><use href="#i-tel"/></svg></div>
+    <div><b>0800 4141</b><span>Orientación en violencia doméstica. Gratis y confidencial.</span></div>
+  </a>
+  <a class="num" href="tel:*4141">
+    <div class="ico"><svg width="26" height="26"><use href="#i-tel"/></svg></div>
+    <div><b>*4141</b><span>Desde celular. Lun a vie 8 a 24 h · sáb y dom 8 a 20 h</span></div>
+  </a>
+</div></div>
+
+<main class="wrap">
+  <section class="bloque" id="servicios">
+    <h2 class="titulo">Servicios en Rivera</h2>
+    <p class="bajada">Atención presencial, por teléfono y por WhatsApp.</p>
+
+    <div class="grid">
+
+      <article class="card">
+        <div class="cab">
+          <div class="sigla"><img src="logos/inmujeres.png" alt="" onerror="this.remove()">INMU</div>
+          <div><h3>Servicio de atención a mujeres en situación de violencia</h3><p class="tipo">Inmujeres · MIDES</p></div>
+        </div>
+        <ul>
+          <li><svg width="18" height="18"><use href="#i-pin"/></svg>Agraciada 784 (Local BPS, subsuelo)</li>
+          <li><svg width="18" height="18"><use href="#i-tel"/></svg>4623 6387 · 099 629 391</li>
+          <li><svg width="18" height="18"><use href="#i-reloj"/></svg>Lun, mié y vie 8 a 12 h · mar y jue 8 a 16 h</li>
+          <li><svg width="18" height="18"><use href="#i-mail"/></svg>serviciovbgrivera@mides.gub.uy</li>
+        </ul>
+        <div class="acciones">
+          <a class="btn btn-violeta" href="tel:46236387">Llamar</a>
+          <a class="btn btn-suave" href="https://wa.me/59899629391">WhatsApp</a>
+          <a class="btn btn-suave" href="mailto:serviciovbgrivera@mides.gub.uy">Escribir</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="cab">
+          <div class="sigla c2"><img src="logos/mides.png" alt="" onerror="this.remove()">MIDES</div>
+          <div><h3>Oficina Territorial Rivera</h3><p class="tipo">Ministerio de Desarrollo Social</p></div>
+        </div>
+        <ul>
+          <li><svg width="18" height="18"><use href="#i-pin"/></svg>Sarandí 921</li>
+          <li><svg width="18" height="18"><use href="#i-tel"/></svg>4622 7472 · 2400 0302 int. 4541</li>
+          <li><svg width="18" height="18"><use href="#i-reloj"/></svg>Lunes a viernes 9 a 14 h</li>
+          <li><svg width="18" height="18"><use href="#i-mail"/></svg>rivera@mides.gub.uy</li>
+        </ul>
+        <div class="acciones">
+          <a class="btn btn-violeta" href="tel:46227472">Llamar</a>
+          <a class="btn btn-suave" href="https://wa.me/59899767949">WhatsApp</a>
+          <a class="btn btn-suave" href="mailto:rivera@mides.gub.uy">Escribir</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="cab">
+          <div class="sigla c3"><img src="logos/inefop.png" alt="" onerror="this.remove()">INEFOP</div>
+          <div><h3>INEFOP Rivera</h3><p class="tipo">Capacitación y orientación laboral gratuita</p></div>
+        </div>
+        <ul>
+          <li><svg width="18" height="18"><use href="#i-pin"/></svg>Florencio Sánchez 1162</li>
+          <li><svg width="18" height="18"><use href="#i-tel"/></svg>4625 0214 · 098 549 873 · 0800 8764</li>
+          <li><svg width="18" height="18"><use href="#i-reloj"/></svg>Lunes a viernes 9 a 12:15 y 13 a 16 h</li>
+          <li><svg width="18" height="18"><use href="#i-mail"/></svg>rivera@inefop.org.uy</li>
+        </ul>
+        <div class="acciones">
+          <a class="btn btn-violeta" href="tel:46250214">Llamar</a>
+          <a class="btn btn-suave" href="https://wa.me/59891250000">WhatsApp</a>
+          <a class="btn btn-suave" href="mailto:rivera@inefop.org.uy">Escribir</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="cab">
+          <div class="sigla c4"><img src="logos/intendencia-rivera.png" alt="" onerror="this.remove()">IDR</div>
+          <div><h3>Oficina de Equidad y Género</h3><p class="tipo">Intendencia de Rivera</p></div>
+        </div>
+        <ul>
+          <li><svg width="18" height="18"><use href="#i-tel"/></svg>4623 1900 int. 117</li>
+          <li><svg width="18" height="18"><use href="#i-mail"/></svg>oficinaequidadygeneroidr@gmail.com</li>
+        </ul>
+        <div class="acciones">
+          <a class="btn btn-violeta" href="tel:46231900">Llamar</a>
+          <a class="btn btn-suave" href="mailto:oficinaequidadygeneroidr@gmail.com">Escribir</a>
+        </div>
+      </article>
+
     </div>
-    <p class="que" style="margin:10px 0 0">0800 4141 / *4141: orientación a mujeres en situación de violencia doméstica. Gratuito y confidencial. Lunes a viernes de 8 a 24 h; sábados y domingos de 8 a 20 h.</p>
-  </section>
 
-  <section class="card">
-    <h2>Inmujeres - Servicio de atención a mujeres en situación de violencia (Rivera)</h2>
-    <p class="que">Atención psicosocial y legal gratuita. MIDES - Instituto Nacional de las Mujeres.</p>
-    <dl>
-      <dt>Dirección</dt><dd>Agraciada 784 (Local BPS, subsuelo), Rivera</dd>
-      <dt>Teléfono</dt><dd>4623 6387 · 099 629 391</dd>
-      <dt>Email</dt><dd>serviciovbgrivera@mides.gub.uy</dd>
-      <dt>Horario</dt><dd>Lun, mié y vie 8 a 12 h · mar y jue 8 a 16 h</dd>
-    </dl>
-    <div class="btns">
-      <a class="btn" href="tel:46236387">Llamar</a>
-      <a class="btn sec" href="https://wa.me/59899629391">WhatsApp</a>
-      <a class="btn sec" href="mailto:serviciovbgrivera@mides.gub.uy">Email</a>
+    <div class="senales">
+      <h2>Más servicios en todo el país</h2>
+      <p>Buscá atención por departamento y localidad en la Guía de recursos del MIDES.</p>
+      <a class="btn btn-blanco" href="https://guiaderecursos.mides.gub.uy/">Abrir la guía</a>
     </div>
   </section>
-
-  <section class="card">
-    <h2>MIDES - Oficina Territorial Rivera</h2>
-    <p class="que">Prestaciones sociales, orientación y derivación a servicios.</p>
-    <dl>
-      <dt>Dirección</dt><dd>Sarandí 921, Rivera</dd>
-      <dt>Teléfono</dt><dd>4622 7472 · 2400 0302 int. 4541</dd>
-      <dt>WhatsApp</dt><dd>099 767 949</dd>
-      <dt>Email</dt><dd>rivera@mides.gub.uy</dd>
-      <dt>Horario</dt><dd>Lunes a viernes de 9 a 14 h</dd>
-    </dl>
-    <div class="btns">
-      <a class="btn" href="tel:46227472">Llamar</a>
-      <a class="btn sec" href="https://wa.me/59899767949">WhatsApp</a>
-      <a class="btn sec" href="mailto:rivera@mides.gub.uy">Email</a>
-    </div>
-  </section>
-
-  <section class="card">
-    <h2>INEFOP Rivera</h2>
-    <p class="que">Capacitación, orientación laboral y cursos gratuitos.</p>
-    <dl>
-      <dt>Dirección</dt><dd>Florencio Sánchez 1162, Rivera</dd>
-      <dt>Teléfono</dt><dd>4625 0214 · 098 549 873</dd>
-      <dt>Email</dt><dd>rivera@inefop.org.uy</dd>
-      <dt>Horario</dt><dd>Lunes a viernes 9 a 12:15 y 13 a 16 h</dd>
-      <dt>Orientación</dt><dd>0800 8764 · WhatsApp 091 250 000</dd>
-    </dl>
-    <div class="btns">
-      <a class="btn" href="tel:46250214">Llamar</a>
-      <a class="btn sec" href="https://wa.me/59891250000">WhatsApp</a>
-      <a class="btn sec" href="mailto:rivera@inefop.org.uy">Email</a>
-    </div>
-  </section>
-
-  <section class="card">
-    <h2>Intendencia de Rivera - Oficina de Equidad y Género</h2>
-    <dl>
-      <dt>Teléfono</dt><dd>4623 1900 int. 117</dd>
-      <dt>Email</dt><dd>oficinaequidadygeneroidr@gmail.com</dd>
-    </dl>
-    <div class="btns">
-      <a class="btn" href="tel:46231900">Llamar</a>
-    </div>
-  </section>
-
-  <section class="card">
-    <h2>Otros servicios en todo el país</h2>
-    <p class="que" style="margin:0">Guía de recursos sociales del MIDES (servicios por departamento y localidad):</p>
-    <div class="btns" style="margin-top:8px">
-      <a class="btn sec" href="https://guiaderecursos.mides.gub.uy/">Guía de recursos MIDES</a>
-    </div>
-  </section>
-
-  <footer>
-    Datos tomados de gub.uy, inefop.uy y la Guía de recursos del MIDES. Última revisión: 22/11/2026.
-    Si un dato cambió, el código QR sigue siendo el mismo: solo se actualiza esta página.
-  </footer>
 </main>
-<button id="salir" onclick="window.location.replace('https://www.google.com.uy/')">Salir rápido</button>
+
+<footer><div class="wrap">Rivera · Uruguay</div></footer>
+
+<button id="salir" onclick="window.location.replace('https://www.google.com.uy/')" aria-label="Salir rápido de esta página">
+  <svg width="18" height="18"><use href="#i-salir"/></svg>Salir rápido
+</button>
 </body>
 </html>
